@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coquetéis.com</title>
+</head>
+<body>
+    
+    <h1><a href="/">Coquetéis.com</a></h1>
+    <p>Bem vindo ao site Coquetéis.com</p>
+
+    <% if (locals.data) { %>
+        <h2><%= data.drinks[0].strDrink %></h2>
+        <p>Categoria: <%= data.drinks[0].strCategory %></p>
+        <img src=<%= data.drinks[0].strDrinkThumb %> alt="drink image">
+        <h3>Ingredientes:</h3>
+        <ul>
+            <% for (i=1; i < Object.keys(data.drinks[0]).length; i++) { %>
+                <% if (data.drinks[0]['strIngredient' + i] != null) { %>
+                    <li> <%= data.drinks[0]['strIngredient' + i] %> </li>
+                <% } else { %>
+                    <% break %>
+                <% } %>
+            <% } %>
+        </ul>
+        <h3>Como preparar:</h3>
+        <p><%= data.drinks[0].strInstructions %></p>
+    <% } %>
+
+</body>
+</html>

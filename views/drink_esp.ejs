@@ -15,15 +15,15 @@
         <p>Categoria: <%= data.drinks[0].strCategory %></p>
         <img src=<%= data.drinks[0].strDrinkThumb %> alt="drink image">
         <h3>Ingredientes:</h3>
-        <ol>
+        <ul>
             <% for (i=1; i < Object.keys(data.drinks[0]).length; i++) { %>
                 <% if (data.drinks[0]['strIngredient' + i] != null) { %>
-                    <li> <%= data.drinks[0]['strIngredient' + i] %> </li>
+                    <li> <%= data.drinks[0]['strMeasure' + i] %> de <%= data.drinks[0]['strIngredient' + i] %> </li>
                 <% } else { %>
                     <% break %>
                 <% } %>
             <% } %>
-        </ol>
+        </ul>
         <h3>Como preparar:</h3>
         <p><%= data.drinks[0].strInstructions %></p>
     <% } %>

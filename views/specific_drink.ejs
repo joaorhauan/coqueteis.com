@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coquetéis.com</title>
+</head>
+<body>
+    
+    <h1><a href="/">Coquetéis.com</a></h1>
+    <p>Welcome to the site Coquetéis.com</p>
+
+    <% if (locals.data) { %>
+        <h2><%= data.drinks[0].strDrink %></h2>
+        <p>Caegory: <%= data.drinks[0].strCategory %></p>
+        <img src=<%= data.drinks[0].strDrinkThumb %> alt="drink image">
+        <h3>Ingredients:</h3>
+        <ul>
+            <% for (i=1; i < 15; i++) { %>
+                <% if (data.drinks[0]['strIngredient' + i]) { %>
+                    <li>
+                        <% if (data.drinks[0]['strMeasure' + i]) { %>
+                            <%= data.drinks[0]['strMeasure' + i] %> of
+                        <% } %> 
+                        <%= data.drinks[0]['strIngredient' + i] %> 
+                    </li>
+                <% } %>
+            <% } %>
+        </ul>
+        <h3>Instructions:</h3>
+        <p><%= data.drinks[0].strInstructions %></p>
+    <% } %>
+
+</body>
+</html>

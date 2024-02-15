@@ -14,15 +14,15 @@ app.get('/', (req,res) => {
     res.render('index.ejs');
 })
 
-app.post('/ingredientes_esp', async (req,res) => {
-    const ingrediente_esp = req.body.ingrediente_esp;
-    if (!ingrediente_esp) {
+app.post('/specific_ingredient', async (req,res) => {
+    const specific_ingredient = req.body.specific_ingredient;
+    if (!specific_ingredient) {
         res.redirect('/');
     } else {
         try {
-            const response = await axios.get(COCKTAIL_API_URL + 'filter.php?i=' + ingrediente_esp, cocktail_config);
+            const response = await axios.get(COCKTAIL_API_URL + 'filter.php?i=' + specific_ingredient, cocktail_config);
             if (response.data){
-                res.render('ingrediente_esp.ejs', {data: response.data});
+                res.render('specific_ingredient.ejs', {data: response.data});
             } else {
                 res.redirect('/');
             }
@@ -33,11 +33,11 @@ app.post('/ingredientes_esp', async (req,res) => {
     }
 })
 
-app.post('/drink_esp', async (req,res) => {
+app.post('/specific_drink', async (req,res) => {
     const drink_id = req.body.drink_id;
     try {
         const response = await axios.get(COCKTAIL_API_URL + 'lookup.php?i=' + drink_id, cocktail_config );
-        res.render('drink_esp.ejs', {data: response.data})
+        res.render('specific_drink.ejs', {data: response.data})
     } catch (error) {
         console.error(error.message)
         res.redirect('/')

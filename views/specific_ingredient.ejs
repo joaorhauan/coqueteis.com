@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +7,18 @@
 </head>
 <body>
     <h1><a href="/">Coquetéis.com</a></h1>
-    <p>Bem vindo ao site Coquetéis.com</p>
+    <p>Welcome to the site Coquetéis.com</p>
 
     <ul>
         <% if (locals.data) { %>
             <% data.drinks.forEach(drink => { %>
                 <li>
-                   <form action="/drink_esp" method="post">
+                   <form action="/specific_drink" method="post">
                         <h3><%= drink.strDrink %></h3>
                         <img src=<%= drink.strDrinkThumb %> alt="drink image">
                         <input type="text" name="drink_id" id="drink_id" value="<%= drink.idDrink %>" readonly style="display:none">
                         <br>
-                        <input type="submit" value="Ver mais...">
+                        <input type="submit" value="See more...">
                    </form>
                 </li>
             <% }); %>
